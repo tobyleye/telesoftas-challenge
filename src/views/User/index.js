@@ -1,6 +1,6 @@
 import UserPosts from "./user-posts";
 import UserSearch from "./user-search";
-import { Route } from "react-router-dom";
+import { Route, useParams } from "react-router-dom";
 
 export function User() {
   return (
@@ -10,13 +10,15 @@ export function User() {
         gridTemplateColumns: "1fr 1fr",
         gap: 20,
         maxWidth: 980,
-        margin: '20px auto'
+        margin: "20px auto",
       }}
     >
       <UserSearch />
-      <Route path="/user/:id">
-        <UserPosts />
-      </Route>
+      {/* discard local state by re-rendering component when a new user is selected,  */}
+      <Route
+        path="/user/:id"
+        render={({ match }) => <UserPosts id={match.params.id} key={match.params.id} />}
+      ></Route>
     </div>
   );
 }

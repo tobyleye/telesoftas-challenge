@@ -35,13 +35,11 @@ export default function UserSeach() {
               );
             })}
           </ul>
-          {pagination && (
-            <Pagination
-              currentPage={page}
-              pagination={pagination}
-              onChange={setPage}
-            />
-          )}
+          <Pagination
+            currentPage={page}
+            pagination={pagination}
+            onChange={setPage}
+          />
         </div>
       )}
     </div>

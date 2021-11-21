@@ -1,13 +1,11 @@
 import { useCallback } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getUserPosts } from "../../api";
 import Pagination from "../../components/Pagination";
 import Loading from "../../components/Loading";
 import { usePaginatedData } from "../../usePaginatedData";
 
-export default function UserPosts() {
-  const { id } = useParams();
-
+export default function UserPosts({ id }) {
   const fetcher = useCallback((page) => getUserPosts(id, page), [id]);
 
   const { data, pagination, loading, error, page, setPage } =
@@ -15,10 +13,15 @@ export default function UserPosts() {
 
   return (
     <div>
-      <Link to="/" style={{
-          textDecoration: 'none',
+      <Link
+        to="/"
+        style={{
+          textDecoration: "none",
           fontSize: 25,
-      }}>&times;</Link>
+        }}
+      >
+        &times;
+      </Link>
       {error ? (
         <div>An error occured</div>
       ) : loading ? (
@@ -37,13 +40,11 @@ export default function UserPosts() {
           })}
         </ul>
       )}
-      {pagination && (
-        <Pagination
-          currentPage={page}
-          pagination={pagination}
-          onChange={setPage}
-        />
-      )}
+      <Pagination
+        currentPage={page}
+        pagination={pagination}
+        onChange={setPage}
+      />
     </div>
   );
 }
