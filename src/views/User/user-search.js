@@ -1,10 +1,10 @@
 import { useCallback, useState } from "react";
-import { queryUsers } from "../api";
-import Pagination from "../components/Pagination";
+import { queryUsers } from "../../api";
+import Pagination from "../../components/Pagination";
 import { Link } from "react-router-dom";
-import DebouncedInput from "../components/DebouncedInput";
-import Loading from "../components/Loading";
-import { usePaginatedData } from "../usePaginatedData";
+import DebouncedInput from "../../components/DebouncedInput";
+import Loading from "../../components/Loading";
+import { usePaginatedData } from "../../usePaginatedData";
 
 export default function UserSeach() {
   const [query, setQuery] = useState("aga");
@@ -16,7 +16,7 @@ export default function UserSeach() {
   );
 
   return (
-    <div className="App">
+    <div>
       <div>
         <DebouncedInput defaultValue={query} onChange={setQuery} />
       </div>

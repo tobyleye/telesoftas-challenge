@@ -1,23 +1,24 @@
 import { useCallback } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getUserPosts } from "../api";
-import Pagination from "../components/Pagination";
-import Loading from "../components/Loading";
-import { usePaginatedData } from "../usePaginatedData";
+import { getUserPosts } from "../../api";
+import Pagination from "../../components/Pagination";
+import Loading from "../../components/Loading";
+import { usePaginatedData } from "../../usePaginatedData";
 
 export default function UserPosts() {
   const { id } = useParams();
 
   const fetcher = useCallback((page) => getUserPosts(id, page), [id]);
 
-  const { data, pagination, loading, error, page, setPage } = usePaginatedData(
-    fetcher
-  );
-  console.log({ data });
+  const { data, pagination, loading, error, page, setPage } =
+    usePaginatedData(fetcher);
 
   return (
     <div>
-      <Link to="/">Go back</Link>
+      <Link to="/" style={{
+          textDecoration: 'none',
+          fontSize: 25,
+      }}>&times;</Link>
       {error ? (
         <div>An error occured</div>
       ) : loading ? (
