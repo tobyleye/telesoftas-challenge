@@ -5,12 +5,27 @@ import { User } from "./views/User";
 
 export default function App() {
   return (
+    <div>
+      <main>
     <BrowserRouter>
       <Switch>
         <Route path={["/", "/user/:id"]} exact component={User}></Route>
         <Route path="*" component={NotFound} />
       </Switch>
     </BrowserRouter>
+    </main>
+
+    <footer style={{
+      position: "fixed",
+      bottom: 0,
+      left: 0,
+      right:0,
+      padding: 20,
+      fontSize: 14
+    }}>
+      <div>{process.env.REACT_APP_NAME}</div>
+    </footer>
+    </div>
   );
 }
 
