@@ -21,7 +21,8 @@ export default function App() {
       left: 0,
       right:0,
       padding: 20,
-      fontSize: 14
+      fontSize: 14,
+      color: '#344'
     }}>
       <div>{process.env.REACT_APP_NAME}</div>
     </footer>

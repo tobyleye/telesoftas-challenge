@@ -4,12 +4,3 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./src:/app/src
-    # environment:
-    #   - REACT_APP_NAME=telesoftas challenge
-    env_file:
-      - ./.env
-
