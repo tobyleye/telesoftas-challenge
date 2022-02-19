@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { queryUsers } from "../../api";
+import { queryUsers } from "../../api.ts";
 import Pagination from "../../components/Pagination";
 import { Link } from "react-router-dom";
 import DebouncedInput from "../../components/DebouncedInput";

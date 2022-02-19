@@ -1,6 +1,6 @@
 import UserPosts from "./user-posts";
 import UserSearch from "./user-search";
-import { Route, useParams } from "react-router-dom";
+import { Route, match } from "react-router-dom";
 
 export function User() {
   return (
@@ -17,7 +17,7 @@ export function User() {
       {/* discard local state by re-rendering component when a new user is selected,  */}
       <Route
         path="/user/:id"
-        render={({ match }) => <UserPosts id={match.params.id} key={match.params.id} />}
+        render={({ match:match }) => <UserPosts id={match.params.id} key={match.params.id} />}
       ></Route>
     </div>
   );

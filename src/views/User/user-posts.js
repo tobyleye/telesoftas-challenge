@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { Link } from "react-router-dom";
-import { getUserPosts } from "../../api";
+import { getUserPosts } from "../../api.ts";
 import Pagination from "../../components/Pagination";
 import Loading from "../../components/Loading";
 import { usePaginatedData } from "../../usePaginatedData";
