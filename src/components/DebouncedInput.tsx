@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 interface DebouncedInputProps {
   delay?:number,
@@ -13,6 +13,14 @@ export default function DebouncedInput({
 }:  DebouncedInputProps) {
   const timer = useRef<null|ReturnType<typeof setTimeout>>(null);
 
+  useEffect(() =>{
+    return ()=>{
+      if(timer.current){
+        clearTimeout(timer.current)
+      }
+    }
+  },[]) 
+  
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     if (timer.current) {
       clearTimeout(timer.current);
