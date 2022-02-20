@@ -9,10 +9,13 @@ import { usePaginatedData } from "../../usePaginatedData";
 export default function UserSeach() {
   const [query, setQuery] = useState("aga");
 
-  const fetcher = useCallback((page) => queryUsers(query, page), [query]);
+  const fetcher = useCallback(
+    (page: number) => queryUsers(query, page),
+    [query]
+  );
 
   const { data, loading, error, pagination, page, setPage } = usePaginatedData(
-    query.length >= 3 && fetcher
+    query.length >= 3 ? fetcher : undefined
   );
 
   return (
@@ -27,7 +30,7 @@ export default function UserSeach() {
       ) : (
         <div>
           <ul>
-            {data.map((item: { id: string; name: string;}) => {
+            {data.map((item: { id: string; name: string }) => {
               return (
                 <li key={item.id}>
                   <Link to={`/user/${item.id}`}>{item.name}</Link>
