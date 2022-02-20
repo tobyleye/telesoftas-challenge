@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { queryUsers } from "../../api.ts";
+import { queryUsers } from "../../api";
 import Pagination from "../../components/Pagination";
 import { Link } from "react-router-dom";
 import DebouncedInput from "../../components/DebouncedInput";
@@ -27,7 +27,7 @@ export default function UserSeach() {
       ) : (
         <div>
           <ul>
-            {data.map((item) => {
+            {data.map((item: { id: string; name: string;}) => {
               return (
                 <li key={item.id}>
                   <Link to={`/user/${item.id}`}>{item.name}</Link>

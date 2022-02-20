@@ -1,4 +1,15 @@
-export default function Pagination({ pagination, onChange, currentPage }) {
+
+interface PaginationProps {
+  pagination: {
+    total:number
+    pages: number;
+    page: number
+  } | null,
+  onChange: (page: number) => void,
+  currentPage: number
+}
+
+export default function Pagination({ pagination, onChange, currentPage }: PaginationProps) {
   if (pagination) {
     const { total, pages, page } = pagination;
     return (
